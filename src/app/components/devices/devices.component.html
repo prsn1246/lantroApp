@@ -1,0 +1,58 @@
+<div class="vh-100">
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <a class="navbar-brand pl-4">LANTRONIX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a [routerLink]="['/dashboard']" routerLinkActive="active" class="nav-item nav-link">Home <span
+            class="sr-only">(current)</span></a>
+        <a [routerLink]="['/devices']" routerLinkActive="active" class="nav-item nav-link">Devices</a>
+      </div>
+    </div>
+    <li class="nav-item dropdown d-block">
+      <a class="nav-link dropdown-toggle cursor-p" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-o" aria-hidden="true"></i> {{userProfile.firstName}} </a>
+      <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+        <a class="dropdown-item" (click)="logOut()">Log out</a>
+      </div>
+    </li>
+  </nav>
+
+  <div class="container h-75">
+    <div class="row h-100">
+      <div class="col-12 my-auto p-0">
+        <div class="col-12 float-right features-container p-0 mb-4 text-right">
+          <button class="btn btn-primary mx-2 rounded-pill" *ngFor="let item of featureList"> {{item | titlecase}}
+          </button>
+        </div>
+        <table class="table table-bg mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Device Name</th>
+              <th scope="col">Serial Number</th>
+              <th scope="col">Last Contacted</th>
+              <th scope="col">Select</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of allDevices">
+              <td>{{item.device_name}}</td>
+              <td>{{item.serial_num}}</td>
+              <td>{{item.last_contacted | date: 'medium'}}</td>
+              <th>
+                <div class="form-check form-check-inline">
+                  <input (click)="selectedDevice(item, $event.target.checked)" class="form-check-input" type="checkbox"
+                    id="inlineCheckbox1" value="option1">
+                </div>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

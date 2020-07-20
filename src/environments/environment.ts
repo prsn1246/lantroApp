@@ -6,6 +6,10 @@ export const environment = {
   production: false
 };
 
+export class AppSettings {
+  static API_ENDPOINT = 'http://nodeapp-env.eba-i7i7z6yu.us-east-2.elasticbeanstalk.com/';
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

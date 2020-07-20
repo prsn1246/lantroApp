@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <a class="navbar-brand px-4">LANTRONIX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a [routerLink]="['/dashboard']" routerLinkActive="active"  class="nav-item nav-link">Home <span class="sr-only">(current)</span></a>
+        <a [routerLink]="['/devices']" routerLinkActive="active"  class="nav-item nav-link">Devices</a>
+      </div>
+    </div>
+    <li class="nav-item dropdown d-block">
+        <a class="nav-link dropdown-toggle cursor-p" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user-o" aria-hidden="true"></i> {{userProfile.firstName}} </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" (click)="logOut()">Log out</a>
+        </div>
+      </li>
+  </nav>
+
+  <div class="dashboard container-fluid">
+    <!-- <p>Dashboard here</p> -->
+    <div class="row h-100">
+        <div class="col-12 trans-c mx-auto my-auto">
+            <h2 class="text-center  my-auto">Welcome to LANTRONIX INDIA</h2>
+        </div>
+    </div>
+  </div>

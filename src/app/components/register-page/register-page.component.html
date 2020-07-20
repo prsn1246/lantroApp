@@ -1,0 +1,105 @@
+<div class="p-md-4">
+  <div class="container-fluid col-12 col-xl-11 mt-5 px-md-3">
+    <div class="row mt-5 pt-5 px-3">
+      <div class="col-12">
+        <h2 class="text-info welcome-text text-center">Welcome. Please {{!showRegisterForm ? 'Login' : 'Register'}}
+        </h2>
+        <div class="bg-info col-md-4 col-sm-8 col-12 mx-auto">
+          <div class="p-4">
+            <form *ngIf="!showRegisterForm" class="needs-validation" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+              <div class="form-row mb-3">
+                <div class="col-md-12 mb-3">
+                  <label for="validationLogEmail">*Email</label>
+                  <input type="text" class="form-control" id="validationLogEmail" inputVal placeholder="Email"
+                    formControlName="email" [ngClass]="{'is-invalid': l.email.touched && (l.email.hasError('required') || l.email.hasError('pattern')),
+                        'is-valid': l.email.valid && l.email.touched}" required>
+                  <div *ngIf="l.email.touched && !l.email.hasError('required') && l.email.hasError('pattern')"
+                    class="invalid-feedback">
+                    Please provide a valid Email.
+                  </div>
+                  <div *ngIf="l.email.touched && l.email.hasError('required')" class="invalid-feedback">
+                    Email Required!
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationLogPwd">*Password</label>
+                  <input type="password" name="password" class="form-control" id="validationLogPwd" [ngClass]="{'is-invalid': l.password.touched && l.password.hasError('required'),
+                            'is-valid': l.password.valid && l.password.touched}" formControlName="password" required>
+                  <div *ngIf="l.password.hasError('required')" class="invalid-feedback">
+                    Password Required!
+                  </div>
+                </div>
+              </div>
+              <div class="d-inline">
+                <button class="btn float-right mb-4 btn-primary" type="submit">Login</button>
+              </div>
+            </form>
+            <form *ngIf="showRegisterForm" class="needs-validation" [formGroup]="registerForm"
+              (ngSubmit)="submitRegisterData()">
+              <div class="form-row mb-3">
+                <div class="col-md-12 mb-3">
+                  <label for="validationFirstName">*Full name</label>
+                  <input type="text" name="full_name" formControlName="firstName" class="form-control"
+                    id="validationFirstName" placeholder="First name" [ngClass]="{'is-invalid': r.firstName.touched && (r.firstName.hasError('required') || r.firstName.hasError('minlength') ),
+                           'is-valid': r.firstName.valid && r.firstName.touched}" minlength="5" required>
+                  <div class="invalid-feedback" *ngIf="r.firstName.hasError('required')">
+                    Full Name Required!
+                  </div>
+                  <div class="invalid-feedback"
+                    *ngIf="!r.firstName.hasError('required') && r.firstName.hasError('minlength')">
+                    Minimum 4 characters Required!
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationLastName">*Last name</label>
+                  <input type="text" name="last_name" formControlName="lastName" class="form-control"
+                    id="validationLastName" placeholder="Last name" [ngClass]="{'is-invalid': r.lastName.touched && r.lastName.hasError('required'),
+                             'is-valid': r.lastName.valid && r.lastName.touched}" minlength="1" required>
+                  <div class="invalid-feedback">
+                    Last Name Required!
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationEmail">*Email</label>
+                  <input type="text" class="form-control" id="validationEmail" inputVal formControlName="email"
+                    [ngClass]="{'is-invalid': r.email.touched && (r.email.hasError('required') || r.email.hasError('pattern')),
+                          'is-valid': r.email.valid && r.email.touched}" required>
+                  <div *ngIf="r.email.touched && !r.email.hasError('required')  && r.email.hasError('pattern')"
+                    class="invalid-feedback">
+                    Please provide a valid Email.
+                  </div>
+                  <div *ngIf="r.email.touched && r.email.hasError('required')" class="invalid-feedback">
+                    Email Required!
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationPwd">*Password</label>
+                  <input type="password" name="password" class="form-control" id="validationPwd" [ngClass]="{'is-invalid': r.password.touched && (r.password.hasError('required') || r.password.hasError('minlength')),
+                          'is-valid': r.password.valid && r.password.touched}" formControlName="password" minlength="4"
+                    required>
+                  <div *ngIf="r.password.touched && r.password.hasError('required')" class="invalid-feedback">
+                    Password Required!
+                  </div>
+                  <div class="invalid-feedback"
+                    *ngIf="!r.password.hasError('required') && r.password.hasError('minlength')">
+                    Minimum 4 characters Required!
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-inline">
+                <button class="btn btn-primary float-right mb-4" type="submit">Register</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-12 mt-4 p-4 ml-1 info-text">
+            <p *ngIf="!showRegisterForm" class="mt-2 text-white cursor-p">Not Signed up yet ? <b class="cursor-pointer"
+                (click)="showForm()">Sign Up Now</b> </p>
+            <p *ngIf="showRegisterForm" class="mt-2 text-white cursor-p">Already have account ? <b
+                class="cursor-pointer" (click)="showForm()">Login In Now</b> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
